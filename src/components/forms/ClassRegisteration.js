@@ -20,7 +20,7 @@ const ClassRegisteration = () => {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("/db.json", {
+      let res = await fetch("http://localhost:3001/app_data", {
         method: "POST",
         body: JSON.stringify({
           subject: subject,
@@ -41,6 +41,7 @@ const ClassRegisteration = () => {
         setMessage("Sttudent created successfully");
       } else {
         setMessage("Some error occured");
+        console.log(res.statusText);
       }
     } catch (err) {
       console.log(err);
@@ -119,6 +120,8 @@ const ClassRegisteration = () => {
                       name="no_of_students"
                       type="number"
                       placeholder="Enter Number of Students in this class"
+                      value={noOfStd}
+                      onChange={(e) => setnoOfStd(e.target.value)}
                     />
                   </div>
                 </div>
@@ -169,8 +172,9 @@ const ClassRegisteration = () => {
           </ul>
         </div>
         <div className="row">
-          <input className="btn btn-dark" type="submit" value="Submit" onSubmit={handleSubmit} />
+          <input className="btn btn-dark" type="submit" value="Submit" />
         </div>
+        <div className="message">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>
   );

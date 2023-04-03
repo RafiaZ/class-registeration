@@ -63,7 +63,7 @@ const ClassRegisteration = () => {
                     <label htmlFor="name">Class ID</label>
                     <input
                       className="form-control"
-                      name="name"
+                      name="nameOfStudent"
                       type="text"
                       placeholder="Enter Class ID"
 
